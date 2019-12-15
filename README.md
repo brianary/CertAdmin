@@ -11,7 +11,7 @@ Cmdlets
 
 Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS).
 
-- [Get-Foo](docs/Find-Certificate.md)
+- [Find-Certificate](docs/Find-Certificate.md)
 
 Tests
 -----
