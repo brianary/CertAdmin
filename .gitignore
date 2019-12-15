@@ -1,0 +1,6 @@
+.apikey
+.*/
+!.template.config/
+bin/
+obj/
+packages/

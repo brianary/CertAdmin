@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="FindCertificateCommand.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildProjectName).psd1" Pack="true" CopyToOutputDirectory="Always" />
+    <None Include="$(MSBuildProjectName).dll-Help.xml" Pack="true" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <Target Name="GetVersion" BeforeTargets="CoreCompile">
+    <Exec Command="pwsh -nol -noni -nop -c &quot;&amp; { Import-LocalizedData -BindingVariable m -FileName $(MSBuildProjectName); (gv m -va).ModuleVersion }&quot;" ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
+    </Exec>
+  </Target>
+
+  <Target Name="Documentation" DependsOnTargets="Publish">
+    <Exec Command="pwsh -nol -noni -nop -c &quot;&amp; { Import-Module (Resolve-Path $(OutputPath)*.psd1); New-MarkdownHelp -Module $(MSBuildProjectName) -OutputFolder ..\..\docs -ea 0; Update-MarkdownHelp ..\..\docs; New-ExternalHelp ..\..\docs -OutputPath . -Force }&quot;" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
+  </Target>
+
+  <Target Name="Pester" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Debug'">
+    <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll" DestinationFolder="$(OutputPath)" />
+    <Exec Command="pwsh -nol -noni -nop -c &quot;&amp; { cd ..\..; Invoke-Pester }&quot;" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
+  </Target>
+
+  <ItemGroup>
+    <PSModulePath Include="$(PSModulePath)" Exclude="C:\Program Files\**;C:\Windows\**" />
+  </ItemGroup>
+
+  <Target Name="PublishModule" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+    <RemoveDir Directories="@(PSModulePath->'%(FullPath)\$(MSBuildProjectName)')" />
+    <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll" DestinationFolder="$(OutputPath)" />
+    <ItemGroup><ModuleFiles Include="$(OutputPath)\*" /></ItemGroup>
+    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="@(PSModulePath->'%(FullPath)\$(MSBuildProjectName)\$(Version)')" />
+    <Error Text="To publish, first run: (Get-Credential API-key -Message 'Enter your API key').Password |ConvertFrom-SecureString |Out-File .\.apikey utf8" Condition="!Exists('..\..\.apikey')" />
+    <Exec Command="pwsh -nol -noni -nop -c &quot;&amp; { (New-Object PSCredential apikey,(Get-Content ..\..\.apikey |ConvertTo-SecureString)).GetNetworkCredential().Password }&quot;" ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="Exists('..\..\.apikey')">
+      <Output TaskParameter="ConsoleOutput" PropertyName="ApiKey" />
+    </Exec>
+    <Exec Command="pwsh -nol -noni -nop -c &quot;&amp; { Import-Module $(MSBuildProjectName); Publish-Module -Name $(MSBuildProjectName) -NuGetApiKey $(ApiKey) }&quot;" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="Exists('..\..\.apikey')" />
+  </Target>
+
+</Project>
