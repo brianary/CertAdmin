@@ -38,6 +38,26 @@ Uses positional parameters to search Cert:\LocalMachine\TrustedPeople for a cert
 
 ## PARAMETERS
 
+### -FindValue
+The value to search for, usually a string.
+
+For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue must be a datetime.
+For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a
+System.Security.Cryptography.Oid.
+For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases: Value
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FindType
 The field of the certificate to compare to FindValue.
 e.g. FindBySubjectName, FindByKeyUsage, FindByIssuerDistinguishedName
@@ -62,21 +82,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FindValue
-The value to search for, usually a string.
+### -StoreName
+The name of the certificate store to search.
+e.g. My, TrustedPeople, Root
 
-For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue must be a datetime.
-For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a
-System.Security.Cryptography.Oid.
-For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.
+Omitting a FindType or StoreName will search all stores and common fields.
 
 ```yaml
-Type: Object
+Type: StoreName
 Parameter Sets: (All)
-Aliases: Value
+Aliases:
+Accepted values: AddressBook, AuthRoot, CertificateAuthority, Disallowed, My, Root, TrustedPeople, TrustedPublisher
 
-Required: True
-Position: 0
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -98,20 +117,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StoreName
-The name of the certificate store to search.
-e.g. My, TrustedPeople, Root
-
-Omitting a FindType or StoreName will search all stores and common fields.
+### -Valid
+Whether to further filter search results by checking the effective and expiration dates.
 
 ```yaml
-Type: StoreName
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: AddressBook, AuthRoot, CertificateAuthority, Disallowed, My, Root, TrustedPeople, TrustedPublisher
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -134,21 +149,6 @@ Accept wildcard characters: False
 
 ### -Require
 Whether to throw an error if a certificate is not found.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Valid
-Whether to further filter search results by checking the effective and expiration dates.
 
 ```yaml
 Type: SwitchParameter

@@ -2,6 +2,320 @@
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Disable-Certificate</command:name>
+      <command:verb>Disable</command:verb>
+      <command:noun>Certificate</command:noun>
+      <maml:description>
+        <maml:para>Sets the Archived property on a certificate.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>{{ Fill in the Description }}</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Disable-Certificate</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>Certificate</maml:name>
+          <maml:Description>
+            <maml:para>The certificate to archive.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+          <dev:type>
+            <maml:name>X509Certificate2</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para></maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para></maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>Certificate</maml:name>
+        <maml:Description>
+          <maml:para>The certificate to archive.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+        <dev:type>
+          <maml:name>X509Certificate2</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para></maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para></maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2 to set as Archived.</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Disable-Certificate.ps1 -Certificate $cert</dev:code>
+        <dev:remarks>
+          <maml:para>Sets $cert.Archived to $true.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Disable-Certificate.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Sets the found ExampleCert as archived.</maml:para>
+          <maml:para>For more information about options for -FindType: https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509findtype.aspx</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Disable-Certificate.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Sets the certificate as archived.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Find-Certificate.ps1</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:linkText>
+        <maml:uri>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Enable-Certificate</command:name>
+      <command:verb>Enable</command:verb>
+      <command:noun>Certificate</command:noun>
+      <maml:description>
+        <maml:para>Unsets the Archived property on a certificate.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>{{ Fill in the Description }}</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Enable-Certificate</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>Certificate</maml:name>
+          <maml:Description>
+            <maml:para>The certificate to un-archive.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+          <dev:type>
+            <maml:name>X509Certificate2</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para></maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para></maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>Certificate</maml:name>
+        <maml:Description>
+          <maml:para>The certificate to un-archive.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+        <dev:type>
+          <maml:name>X509Certificate2</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para></maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para></maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2 to set unmark as Archived.</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Enable-Certificate.ps1 -Certificate $cert</dev:code>
+        <dev:remarks>
+          <maml:para>Sets $cert.Archived to $false.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Enable-Certificate.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Sets the found ExampleCert as not archived.</maml:para>
+          <maml:para>For more information about options for -FindType: https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509findtype.aspx</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Enable-Certificate.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Sets the certificate as not archived.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Find-Certificate.ps1</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:linkText>
+        <maml:uri>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Find-Certificate</command:name>
       <command:verb>Find</command:verb>
       <command:noun>Certificate</command:noun>
@@ -99,6 +413,17 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Valid</maml:name>
+          <maml:Description>
+            <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>NotArchived</maml:name>
           <maml:Description>
             <maml:para>Whether to further filter search results by excluding certificates marked as archived.</maml:para>
@@ -120,34 +445,9 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Valid</maml:name>
-          <maml:Description>
-            <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Type, Field">
-        <maml:name>FindType</maml:name>
-        <maml:Description>
-          <maml:para>The field of the certificate to compare to FindValue. e.g. FindBySubjectName, FindByKeyUsage, FindByIssuerDistinguishedName</maml:para>
-          <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue should be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
-          <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">X509FindType</command:parameterValue>
-        <dev:type>
-          <maml:name>X509FindType</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Value">
         <maml:name>FindValue</maml:name>
         <maml:Description>
@@ -161,14 +461,16 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
-        <maml:name>StoreLocation</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Type, Field">
+        <maml:name>FindType</maml:name>
         <maml:Description>
-          <maml:para>Whether to search the certificates of the CurrentUser or the LocalMachine.</maml:para>
+          <maml:para>The field of the certificate to compare to FindValue. e.g. FindBySubjectName, FindByKeyUsage, FindByIssuerDistinguishedName</maml:para>
+          <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue should be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
+          <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">StoreLocation</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">X509FindType</command:parameterValue>
         <dev:type>
-          <maml:name>StoreLocation</maml:name>
+          <maml:name>X509FindType</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -186,6 +488,30 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>StoreLocation</maml:name>
+        <maml:Description>
+          <maml:para>Whether to search the certificates of the CurrentUser or the LocalMachine.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">StoreLocation</command:parameterValue>
+        <dev:type>
+          <maml:name>StoreLocation</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Valid</maml:name>
+        <maml:Description>
+          <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>NotArchived</maml:name>
         <maml:Description>
@@ -202,18 +528,6 @@
         <maml:name>Require</maml:name>
         <maml:Description>
           <maml:para>Whether to throw an error if a certificate is not found.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Valid</maml:name>
-        <maml:Description>
-          <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>

@@ -1,10 +1,10 @@
-namespace ModuleName // use your module name for the namespace
+namespace CertAdmin
 
 open System
 open System.Management.Automation
 open System.Security.Cryptography.X509Certificates
 
-/// Output type works the same as for PowerShell cmdlets
+/// Searches a certificate store for certificates.
 [<Cmdlet(VerbsCommon.Find, "Certificate")>]
 [<OutputType(typeof<X509Certificate2[]>)>]
 type FindCertificateCommand () =

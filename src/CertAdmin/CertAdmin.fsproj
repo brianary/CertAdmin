@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="DisableCertificateCommand.fs" />
+    <Compile Include="EnableCertificateCommand.fs" />
     <Compile Include="FindCertificateCommand.fs" />
   </ItemGroup>
 
