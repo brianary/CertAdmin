@@ -14,8 +14,8 @@ Describe 'CertAdmin' {
             $cert = Get-ChildItem Cert:\CurrentUser\Root |
                 where {$_.NotAfter -lt (Get-Date) -and !$_.Archived} |
                 select -First 1
-            if($notAdmin) {Set-ItResult -Inconclusive -Because 'Not running as admin'}
-            elseif(!$cert) {Set-ItResult -Inconclusive -Because 'Not certs found'}
+            if($notAdmin) {Set-ItResult -Inconclusive -Because 'this process is not running as admin'}
+            elseif(!$cert) {Set-ItResult -Inconclusive -Because 'no certs were found to test'}
             else
             {
                 $cert |Disable-Certificate
