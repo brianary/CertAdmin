@@ -15,9 +15,10 @@ type FindCertificateCommand () =
         store.Open(OpenFlags.OpenExistingOnly)
         let found = store.Certificates.Find(findtype,value,valid)
         store.Close()
+        store.Dispose()
         if notarchived then
             Seq.filter (fun i -> found.[i].Archived) [(found.Count-1)..0]
-                |> Seq.iter (fun i -> found.RemoveAt(i))
+            |> Seq.iter (fun i -> found.RemoveAt(i))
         found
 
     /// The value to search for, usually a string.

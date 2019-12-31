@@ -11,7 +11,12 @@ Copyright = '(c) Brian Lalonde. All rights reserved.'
 Description = 'A description of this module template.'
 PowerShellVersion = '6.0'
 FunctionsToExport = @()
-CmdletsToExport = @('Disable-Certificate','Enable-Certificate','Find-Certificate')
+CmdletsToExport = @(
+    'Disable-Certificate'
+    'Enable-Certificate'
+    'Find-Certificate'
+    'Get-CertificatePrivateKeyPath'
+)
 VariablesToExport = @()
 AliasesToExport = @()
 FileList = @('CertAdmin.dll','CertAdmin.dll-Help.xml')

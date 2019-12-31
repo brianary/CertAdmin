@@ -8,10 +8,12 @@
     <Compile Include="DisableCertificateCommand.fs" />
     <Compile Include="EnableCertificateCommand.fs" />
     <Compile Include="FindCertificateCommand.fs" />
+    <Compile Include="GetCertificatePrivateKeyPathCommand.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.7.0" />
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
   </ItemGroup>
 

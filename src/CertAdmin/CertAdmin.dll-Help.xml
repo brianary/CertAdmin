@@ -10,7 +10,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>Setting the Archived property allows you to disable a certificate without deleting it, for software that excludes Archived certificates.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -125,14 +125,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Disable-Certificate.ps1 -Certificate $cert</dev:code>
+        <dev:code>Disable-Certificate -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Sets $cert.Archived to $true.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Disable-Certificate.ps1</dev:code>
+        <dev:code>Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Disable-Certificate</dev:code>
         <dev:remarks>
           <maml:para>Sets the found ExampleCert as archived.</maml:para>
           <maml:para>For more information about options for -FindType: https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509findtype.aspx</maml:para>
@@ -140,17 +140,13 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Disable-Certificate.ps1</dev:code>
+        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Disable-Certificate</dev:code>
         <dev:remarks>
           <maml:para>Sets the certificate as archived.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Find-Certificate.ps1</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:linkText>
         <maml:uri>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:uri>
@@ -167,7 +163,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>Clearing the Archived property allows you to enable a certificate without having to re-import it, for software that excludes Archived certificates.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -282,14 +278,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Enable-Certificate.ps1 -Certificate $cert</dev:code>
+        <dev:code>Enable-Certificate -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Sets $cert.Archived to $false.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Enable-Certificate.ps1</dev:code>
+        <dev:code>Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Enable-Certificate</dev:code>
         <dev:remarks>
           <maml:para>Sets the found ExampleCert as not archived.</maml:para>
           <maml:para>For more information about options for -FindType: https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509findtype.aspx</maml:para>
@@ -297,17 +293,13 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
-        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Enable-Certificate.ps1</dev:code>
+        <dev:code>Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Enable-Certificate</dev:code>
         <dev:remarks>
           <maml:para>Sets the certificate as not archived.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Find-Certificate.ps1</maml:linkText>
-        <maml:uri></maml:uri>
-      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:linkText>
         <maml:uri>https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived</maml:uri>
@@ -590,6 +582,92 @@
       <maml:navigationLink>
         <maml:linkText>X509Certificate2</maml:linkText>
         <maml:uri>https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CertificatePrivateKeyPath</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>CertificatePrivateKeyPath</command:noun>
+      <maml:description>
+        <maml:para>Gets the physical path on disk of a certificate's private key.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Getting a certificate's private key path is important when managing the access permissions to that certificate. For example, IIS web applications that require a client certificate to communicate to other web services will need explicit access to the file granted or accessing the certificate will fail with a cryptic, unhelpful error.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CertificatePrivateKeyPath</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>Certificate</maml:name>
+          <maml:Description>
+            <maml:para>A certificate in the Windows Certificate Store.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+          <dev:type>
+            <maml:name>X509Certificate2</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>Certificate</maml:name>
+        <maml:Description>
+          <maml:para>A certificate in the Windows Certificate Store.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+        <dev:type>
+          <maml:name>X509Certificate2</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-Certificate.ps1 localhost FindBySubjectName My LocalMachine |Get-CertificatePath.ps1
+
+C:\ProgramData\Microsoft\crypto\rsa\machinekeys\abd662b361941f26a1173357adb3c12d_b4d34fe9-d85e-45e3-83dd-a52fa93c8551</dev:code>
+        <dev:remarks>
+          <maml:para>A certificate is found, and the location of the private key on disk is returned.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509findtype.aspx</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>

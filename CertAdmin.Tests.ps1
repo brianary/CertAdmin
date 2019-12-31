@@ -49,4 +49,15 @@ Describe 'CertAdmin' {
             $certs |Should -BeOfType [System.Security.Cryptography.X509Certificates.X509Certificate2]
         }
     }
+    Context 'Get-CertificatePrivateKeyPath cmdlet' {
+        $certs = Get-ChildItem Cert:\CurrentUser\My |Where-Object {$_.HasPrivateKey}
+        It "Find certificate private key path for '<Subject>' (<Thumbprint>)" -TestCases (
+             $certs| ForEach-Object {@{Certificate=$_; Subject=$_.Subject; Thumbprint=$_.Thumbprint}}
+        ) {
+            Param($Certificate,$Subject,$Thumbprint)
+            $keypath = $Certificate |Get-CertificatePrivateKeyPath
+            $keypath |Should -Not -BeNullOrEmpty -Because 'a path value should be returned'
+            $keypath |Should -Exist -Because 'the private key file should exist'
+        } -Skip:(!$certs)
+    }
 }

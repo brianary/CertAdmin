@@ -24,14 +24,14 @@ for software that excludes Archived certificates.
 
 ### EXAMPLE 1
 ```
-Disable-Certificate.ps1 -Certificate $cert
+Disable-Certificate -Certificate $cert
 ```
 
 Sets $cert.Archived to $true.
 
 ### EXAMPLE 2
 ```
-Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Disable-Certificate.ps1
+Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Disable-Certificate
 ```
 
 Sets the found ExampleCert as archived.
@@ -41,7 +41,7 @@ https://msdn.microsoft.com/library/system.security.cryptography.x509certificates
 
 ### EXAMPLE 3
 ```
-Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Disable-Certificate.ps1
+Get-Item Cert:\CurrentUser\My\F397B30796BE1E1D11C34B6893A2F035844FD936 |Disable-Certificate
 ```
 
 Sets the certificate as archived.
@@ -104,7 +104,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Find-Certificate.ps1]()
 
 [https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived](https://docs.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2.archived)
