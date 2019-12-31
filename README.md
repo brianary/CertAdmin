@@ -11,7 +11,10 @@ Cmdlets
 
 Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS).
 
+- [Disable-Certificate](docs/Disable-Certificate.md)
+- [Enable-Certificate](docs/Enable-Certificate.md)
 - [Find-Certificate](docs/Find-Certificate.md)
+- [Get-CertificatePrivateKeyPath](docs/Get-CertificatePrivateKeyPath.md)
 
 Tests
 -----
