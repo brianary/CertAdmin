@@ -1179,7 +1179,7 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess.ps1 ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Allows the ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>
@@ -1398,14 +1398,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Block-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Revoke-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Revokes the ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Revoke-CertificateAccess.ps1 ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Revokes the ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>
@@ -1620,14 +1620,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Block-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Unblock-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Revokes the denied ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Unblock-CertificateAccess.ps1 ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Revokes the denied ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>

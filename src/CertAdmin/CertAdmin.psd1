@@ -28,9 +28,9 @@ FileList = @('CertAdmin.dll','CertAdmin.dll-Help.xml')
 PrivateData = @{
     PSData = @{
         Tags = @('X509','certificate','permissions')
-        # LicenseUri = ''
-        # ProjectUri = ''
-        # IconUri = ''
+        LicenseUri = 'https://github.com/brianary/CertAdmin/blob/master/LICENSE'
+        ProjectUri = 'https://github.com/brianary/CertAdmin/'
+        # IconUri = 'http://webcoder.info/images/CertAdmin.svg'
         # ReleaseNotes = ''
     }
 }

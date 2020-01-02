@@ -31,14 +31,14 @@ This will rescind denied access to a certificate's private key file.
 
 ### Example 1
 ```powershell
-PS C:\> Block-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert
+PS C:\> Unblock-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert
 ```
 
 Revokes the denied ExampleAppPool app pool access to read the cert in $cert.
 
 ### Example 2
 ```powershell
-PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool
+PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Unblock-CertificateAccess.ps1 ExampleAppPool
 ```
 
 Revokes the denied ExampleAppPool app pool access to read the found ExampleCert.

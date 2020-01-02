@@ -38,7 +38,7 @@ Allows the ExampleAppPool app pool access to read the cert in $cert.
 
 ### Example 2
 ```powershell
-PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool
+PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess.ps1 ExampleAppPool
 ```
 
 Allows the ExampleAppPool app pool access to read the found ExampleCert.
