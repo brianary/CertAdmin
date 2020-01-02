@@ -5,7 +5,7 @@ open System.Management.Automation
 open System.Security.Cryptography.X509Certificates
 
 /// Searches a certificate store for certificates.
-[<Cmdlet(VerbsCommon.Find, "Certificate")>]
+[<Cmdlet(VerbsCommon.Find, "Certificate", ConfirmImpact=ConfirmImpact.None)>]
 [<OutputType(typeof<X509Certificate2[]>)>]
 type FindCertificateCommand () =
     inherit PSCmdlet ()

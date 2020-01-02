@@ -12,24 +12,24 @@ open System.Security.Permissions
 open Microsoft.Win32.SafeHandles
 
 /// Sets the Archived property on a certificate.
-[<Cmdlet(VerbsCommon.Get, "CertificatePrivateKeyPath")>]
+[<Cmdlet(VerbsCommon.Get, "CertificatePath", ConfirmImpact=ConfirmImpact.None)>]
 [<OutputType(typeof<string>)>]
-type GetCertificatePrivateKeyPathCommand () =
+type GetCertificatePathCommand () =
     inherit PSCmdlet ()
 
-    static let findCurrentUserPrivateKeyFile filename =
+    static let findCurrentUserFile filename =
         Directory.GetFiles(Environment.ExpandEnvironmentVariables(@"%APPDATA%\Microsoft\Crypto"),
                            filename, SearchOption.AllDirectories )
             |> Seq.tryHead
 
-    static let findAnyUserPrivateKeyFile filename =
+    static let findAnyUserFile filename =
         (DirectoryInfo @"C:\Users").GetDirectories()
             |> Seq.map (fun d -> Path.Combine( d.FullName, @"AppData\Roaming\Microsoft\Crypto" ))
             |> Seq.filter Directory.Exists
             |> Seq.collect (fun d -> Directory.GetFiles(d, filename, SearchOption.AllDirectories))
             |> Seq.tryHead
 
-    static let findMachinePrivateKeyFile filename =
+    static let findMachineFile filename =
         Directory.GetFiles(Environment.ExpandEnvironmentVariables(@"%ProgramData%\Microsoft\Crypto"),
                            filename, SearchOption.AllDirectories )
             |> Seq.tryHead
@@ -64,27 +64,29 @@ type GetCertificatePrivateKeyPathCommand () =
     [<ValidateNotNullOrEmpty>]
     member val Certificate : X509Certificate2 = null with get, set
 
+    static member internal Invoke (cert:X509Certificate2) =
+        if not cert.HasPrivateKey then
+            invalidArg "Certificate" "Certificate does not have a private key."
+        let filename =
+            match cert.PrivateKey :> obj with
+            | :? ICspAsymmetricAlgorithm as key -> key.CspKeyContainerInfo.UniqueKeyContainerName
+            | _ -> GetCertificatePathCommand.GetCngUniqueKeyContainerName cert
+        if String.IsNullOrEmpty filename then
+            invalidArg "Certificate" "Certificate is missing the private key filename."
+        match findCurrentUserFile filename with
+        | Some path -> path
+        | None ->
+            match findMachineFile filename with
+            | Some path -> path
+            | None ->
+                match findAnyUserFile filename with
+                | Some path -> path
+                | None -> invalidOp "Unable to get certificate private key path."
+
     override x.ProcessRecord () =
         base.ProcessRecord ()
         try
-            if not x.Certificate.HasPrivateKey then
-                invalidArg "Certificate" "Certificate does not have a private key."
-            let filename =
-                match x.Certificate.PrivateKey :> obj with
-                | :? ICspAsymmetricAlgorithm as key -> key.CspKeyContainerInfo.UniqueKeyContainerName
-                | _ -> GetCertificatePrivateKeyPathCommand.GetCngUniqueKeyContainerName x.Certificate
-            if String.IsNullOrEmpty filename then
-                invalidArg "Certificate" "Certificate is missing the private key filename."
-            match findCurrentUserPrivateKeyFile filename with
-            | Some path -> x.WriteObject(path)
-            | None ->
-                match findMachinePrivateKeyFile filename with
-                | Some path -> x.WriteObject(path)
-                | None ->
-                    x.WriteWarning "Searching more desperately for the certificate file."
-                    match findAnyUserPrivateKeyFile filename with
-                    | Some path -> x.WriteObject(path)
-                    | None -> invalidOp "Unable to get certificate private key path."
+            x.WriteObject(GetCertificatePathCommand.Invoke x.Certificate)
         with
         | :? ArgumentException as exn ->
             x.WriteError(ErrorRecord(exn, exn.Message, ErrorCategory.InvalidArgument, x.Certificate))

@@ -5,37 +5,33 @@ online version: https://msdn.microsoft.com/library/system.security.cryptography.
 schema: 2.0.0
 ---
 
-# Get-CertificatePrivateKeyPath
+# Get-CertificatePermissions
 
 ## SYNOPSIS
-Gets the physical path on disk of a certificate's private key.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Get-CertificatePrivateKeyPath [-Certificate] <X509Certificate2> [<CommonParameters>]
+Get-CertificatePermissions [-Certificate] <X509Certificate2> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Getting a certificate's private key path is important when managing the access permissions to that certificate.
-For example, IIS web applications that require a client certificate to communicate to other web services will
-need explicit access to the file granted or accessing the certificate will fail with a cryptic, unhelpful error.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Find-Certificate.ps1 localhost FindBySubjectName My LocalMachine |Get-CertificatePath.ps1
-
-C:\ProgramData\Microsoft\crypto\rsa\machinekeys\abd662b361941f26a1173357adb3c12d_b4d34fe9-d85e-45e3-83dd-a52fa93c8551
+PS C:\> {{ Add example code here }}
 ```
 
-A certificate is found, and the location of the private key on disk is returned.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Certificate
-A certificate in the Windows Certificate Store.
+{{ Fill Certificate Description }}
 
 ```yaml
 Type: X509Certificate2
@@ -58,8 +54,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
+### System.Object
 ## NOTES
 
 ## RELATED LINKS

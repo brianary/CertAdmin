@@ -12,10 +12,15 @@ Description = 'A description of this module template.'
 PowerShellVersion = '6.0'
 FunctionsToExport = @()
 CmdletsToExport = @(
+    'Block-CertificateAccess'
     'Disable-Certificate'
     'Enable-Certificate'
     'Find-Certificate'
-    'Get-CertificatePrivateKeyPath'
+    'Get-CertificatePath'
+    'Get-CertificatePermissions'
+    'Grant-CertificateAccess'
+    'Revoke-CertificateAccess'
+    'Unblock-CertificateAccess'
 )
 VariablesToExport = @()
 AliasesToExport = @()

@@ -11,10 +11,14 @@ Cmdlets
 
 Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS).
 
+- [Block-CertificateAccess](docs/Block-CertificateAccess.md)
 - [Disable-Certificate](docs/Disable-Certificate.md)
 - [Enable-Certificate](docs/Enable-Certificate.md)
 - [Find-Certificate](docs/Find-Certificate.md)
-- [Get-CertificatePrivateKeyPath](docs/Get-CertificatePrivateKeyPath.md)
+- [Get-CertificatePath](docs/Get-CertificatePath.md)
+- [Grant-CertificateAccess](docs/Grant-CertificateAccess.md)
+- [Revoke-CertificateAccess](docs/Revoke-CertificateAccess.md)
+- [Unblock-CertificateAccess](docs/Unblock-CertificateAccess.md)
 
 Tests
 -----

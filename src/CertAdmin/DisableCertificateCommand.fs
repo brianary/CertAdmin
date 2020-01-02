@@ -16,4 +16,5 @@ type DisableCertificateCommand () =
 
     override x.ProcessRecord () =
         base.ProcessRecord ()
-        x.Certificate.Archived <- true
+        if x.ShouldProcess(x.Certificate.Subject, "archive") then
+            x.Certificate.Archived <- true
