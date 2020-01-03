@@ -31,7 +31,7 @@ type GetCertificatePermissionsCommand () =
     override x.ProcessRecord () =
         base.ProcessRecord ()
         try
-            x.WriteVerbose(sprintf "For certificate: %A" x.Certificate)
+            x.WriteVerbose(sprintf "Permissions for certificate: %A" x.Certificate)
             (GetCertificatePermissionsCommand.GetAccessControl x.Certificate).
                 GetAccessRules(true, true, typeof<NTAccount>).Cast<FileSystemAccessRule>()
                 |> Seq.iter x.WriteObject

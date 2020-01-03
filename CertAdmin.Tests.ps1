@@ -1,6 +1,5 @@
 Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -vb
-$everyone = "$env:COMPUTERNAME\Everyone"
-$guest = [Security.Principal.WindowsBuiltInRole]::Guest
+$guest = "$env:COMPUTERNAME\Guest"
 $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).`
     IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 $pkcerts = Get-ChildItem Cert:\CurrentUser\My |Where-Object {$_.HasPrivateKey}
@@ -80,37 +79,36 @@ Describe 'CertAdmin' {
             $perms.Length |Should -BeGreaterThan 0 -Because 'the certificate should have permissions'
         } -Skip:(!$pkcerts)
     }
-    #TODO: Permissions testing needs work.
     Context 'Grant-CertificateAccess cmdlet' {
-        It "Grant everyone access to certificate  '<Subject>' (<Thumbprint>)" -TestCases $certparams {
+        It "Grant $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
             Param($Certificate,$Subject,$Thumbprint,$Path)
-            if(Test-HasAccess $everyone $Path 'Allow')
+            if(Test-HasAccess $guest $Path 'Allow')
             {
-                Set-ItResult -Inconclusive -Because "$everyone already has access to $Path"
+                Set-ItResult -Inconclusive -Because "$guest already has access to $Path"
             }
             else
             {
-                $Certificate |Grant-CertificateAccess -UserName $everyone
-                Test-HasAccess $everyone $Path 'Allow' |Should -BeTrue
+                $Certificate |Grant-CertificateAccess -UserName $guest
+                Test-HasAccess $guest $Path 'Allow' |Should -BeTrue
             }
-        } -Skip
+        }
     }
     Context 'Revoke-CertificateAccess cmdlet' {
-        It "Revoke everyone's access to certificate  '<Subject>' (<Thumbprint>)" -TestCases $certparams {
+        It "Revoke $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
             Param($Certificate,$Subject,$Thumbprint,$Path)
-            if(!(Test-HasAccess $everyone $Path 'Allow'))
+            if(!(Test-HasAccess $guest $Path 'Allow'))
             {
-                Set-ItResult -Inconclusive -Because "$everyone doesn''t have access to $Path"
+                Set-ItResult -Inconclusive -Because "$guest doesn't have access to $Path"
             }
             else
             {
-                $Certificate |Revoke-CertificateAccess -UserName $everyone
-                Test-HasAccess $everyone $Path 'Allow' |Should -BeFalse
+                $Certificate |Revoke-CertificateAccess -UserName $guest
+                Test-HasAccess $guest $Path 'Allow' |Should -BeFalse
             }
-        } -Skip
+        }
     }
     Context 'Block-CertificateAccess cmdlet' {
-        It "Deny guest access to certificate  '<Subject>' (<Thumbprint>)" -TestCases $certparams {
+        It "Deny $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
             Param($Certificate,$Subject,$Thumbprint,$Path)
             if(Test-HasAccess $guest $Path 'Deny')
             {
@@ -121,20 +119,20 @@ Describe 'CertAdmin' {
                 $Certificate |Block-CertificateAccess -UserName $guest
                 Test-HasAccess $guest $Path 'Deny' |Should -BeTrue
             }
-        } -Skip
+        }
     }
     Context 'Unblock-CertificateAccess cmdlet' {
-        It "Rescind blocked guest access to certificate  '<Subject>' (<Thumbprint>)" -TestCases $certparams {
+        It "Rescind blocked $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
             Param($Certificate,$Subject,$Thumbprint,$Path)
             if(!(Test-HasAccess $guest $Path 'Deny'))
             {
-                Set-ItResult -Inconclusive -Because "$guest doesn''t have blocked access to $Path"
+                Set-ItResult -Inconclusive -Because "$guest doesn't have blocked access to $Path"
             }
             else
             {
                 $Certificate |Unblock-CertificateAccess -UserName $guest
                 Test-HasAccess $guest $Path 'Deny' |Should -BeFalse
             }
-        } -Skip
+        }
     }
 }

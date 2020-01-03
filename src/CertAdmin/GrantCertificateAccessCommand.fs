@@ -30,7 +30,9 @@ type GrantCertificateAccessCommand () =
 
     /// Determines if the process is running as admin.
     static member internal IsAdministrator () =
-        WindowsPrincipal.Current.IsInRole(WindowsBuiltInRole.Administrator.ToString())
+        use identity = WindowsIdentity.GetCurrent ()
+        let principal = WindowsPrincipal identity
+        principal.IsInRole(WindowsBuiltInRole.Administrator)
 
     /// Ensure admins have access to grant access to machinekeys.
     static member internal EnsureAdminKeyAccess (cmdlet:PSCmdlet) =
@@ -42,8 +44,8 @@ type GrantCertificateAccessCommand () =
             r.IdentityReference = admin
                 && r.AccessControlType.HasFlag(AccessControlType.Allow)
                 && r.FileSystemRights.HasFlag(FileSystemRights.FullControl)
-        let hasAdminFull = Seq.tryFind isAdminFull
-        if ((not << Option.isSome << hasAdminFull) rules)
+        let hasAdminFull = Seq.tryFind isAdminFull >> Option.isSome
+        if ((not << hasAdminFull) rules)
             && cmdlet.ShouldProcess(sprintf "Administrators full control of %s" keysinfo.FullName, "grant") then
             if security.GetOwner(typeof<NTAccount>) <> admin
                 && cmdlet.ShouldProcess(sprintf "Administrators ownership of %s" keysinfo.FullName, "set") then
@@ -57,8 +59,8 @@ type GrantCertificateAccessCommand () =
     /// Change the permissions on a certificate's private key file to add or remove allow or deny access.
     member internal x.ChangePermissions controltype add =
         try
-            if not <| GrantCertificateAccessCommand.IsAdministrator () then
-                x.WriteWarning "Permission changes may require running as administrator."
+            if (not << GrantCertificateAccessCommand.IsAdministrator) () then
+                x.WriteWarning "Not running as administrator. Permission changes may not succeed."
             let identity =
                 if x.ParameterSetName = "AppPool" then
                     sprintf @"IIS AppPool\%s" x.AppPool
@@ -70,7 +72,7 @@ type GrantCertificateAccessCommand () =
                 GrantCertificateAccessCommand.EnsureAdminKeyAccess x
                 GetCertificatePermissionsCommand.SetAccessControl x.Certificate
                     (fun security ->
-                        FileSystemAccessRule(identity, FileSystemRights.Read, AccessControlType.Allow)
+                        FileSystemAccessRule(identity, FileSystemRights.Read, controltype)
                             |> (if add then security.AddAccessRule else security.RemoveAccessRuleSpecific)
                         sprintf "%A certificate permission for %s" controltype identity |> x.WriteVerbose
                         security)
