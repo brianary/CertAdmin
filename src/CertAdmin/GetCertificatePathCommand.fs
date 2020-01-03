@@ -86,6 +86,7 @@ type GetCertificatePathCommand () =
     override x.ProcessRecord () =
         base.ProcessRecord ()
         try
+            x.WriteVerbose(sprintf "For certificate: %A" x.Certificate)
             x.WriteObject(GetCertificatePathCommand.Invoke x.Certificate)
         with
         | :? ArgumentException as exn ->
