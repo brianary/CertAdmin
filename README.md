@@ -2,7 +2,7 @@ CertAdmin
 ================
 
 <!-- To publish to PowerShell Gallery: dotnet build -t:PublishModule -c Release -->
-<!-- img src="CertAdmin.svg" alt="CertAdmin icon" align="right" / -->
+<img src="CertAdmin.svg" alt="CertAdmin icon" align="right" />
 
 Manage certificates and their permissions on a Windows server.
 

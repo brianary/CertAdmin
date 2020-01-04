@@ -30,7 +30,7 @@ PrivateData = @{
         Tags = @('X509','certificate','permissions')
         LicenseUri = 'https://github.com/brianary/CertAdmin/blob/master/LICENSE'
         ProjectUri = 'https://github.com/brianary/CertAdmin/'
-        # IconUri = 'http://webcoder.info/images/CertAdmin.svg'
+        IconUri = 'http://webcoder.info/images/CertAdmin.svg'
         # ReleaseNotes = ''
     }
 }
