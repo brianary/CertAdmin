@@ -44,7 +44,7 @@
   </Target>
 
   <ItemGroup>
-    <PSModulePath Include="$(PSModulePath)" Exclude="C:\Program Files\**;C:\Windows\**" />
+    <PSModulePath Include="$(PSModulePath)" Exclude="C:\Program Files\**;C:\Windows\**;C:\ProgramData\chocolatey\**" />
   </ItemGroup>
 
   <Target Name="PublishModule" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Release'">
