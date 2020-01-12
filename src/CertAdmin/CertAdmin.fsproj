@@ -44,6 +44,8 @@
       IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
   </Target>
 
+  <Target Name="test" DependsOnTargets="Pester" />
+
   <Target Name="Pester" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Debug'">
     <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll"
       DestinationFolder="$(OutputPath)" />
