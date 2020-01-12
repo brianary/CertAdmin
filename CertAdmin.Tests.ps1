@@ -1,5 +1,5 @@
 # Pester tests, see https://github.com/Pester/Pester/wiki
-$envPath = $env:Path # avoid testingc the wrong cmdlets
+$envPath = $env:Path # avoid testing the wrong cmdlets
 Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -vb
 $guest = "$env:COMPUTERNAME\Guest"
 $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).`
