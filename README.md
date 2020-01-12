@@ -4,6 +4,8 @@ CertAdmin
 <!-- To publish to PowerShell Gallery: dotnet build -t:PublishModule -c Release -->
 <img src="CertAdmin.svg" alt="CertAdmin icon" align="right" />
 
+[![Actions Status](https://github.com/brianary/CertAdmin/workflows/.NET%20Core/badge.svg)](https://github.com/brianary/CertAdmin/actions)
+
 Manage certificates and their permissions on a Windows server.
 
 Cmdlets
