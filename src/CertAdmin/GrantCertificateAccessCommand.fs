@@ -30,9 +30,7 @@ type GrantCertificateAccessCommand () =
 
     /// Determines if the process is running as admin.
     static member internal IsAdministrator () =
-        use identity = WindowsIdentity.GetCurrent ()
-        let principal = WindowsPrincipal identity
-        principal.IsInRole(WindowsBuiltInRole.Administrator)
+        (WindowsIdentity.GetCurrent () |> WindowsPrincipal).IsInRole(WindowsBuiltInRole.Administrator)
 
     /// Ensure admins have access to grant access to machinekeys.
     static member internal EnsureAdminKeyAccess (cmdlet:PSCmdlet) =
