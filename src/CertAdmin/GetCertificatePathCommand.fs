@@ -11,7 +11,7 @@ open System.Security.Cryptography.X509Certificates
 open System.Security.Permissions
 open Microsoft.Win32.SafeHandles
 
-/// Sets the Archived property on a certificate.
+/// Gets the physical path on disk of a certificate's private key.
 [<Cmdlet(VerbsCommon.Get, "CertificatePath", ConfirmImpact=ConfirmImpact.None)>]
 [<OutputType(typeof<string>)>]
 type GetCertificatePathCommand () =

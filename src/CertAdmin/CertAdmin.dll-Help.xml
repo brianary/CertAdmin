@@ -808,7 +808,7 @@
       <command:verb>Get</command:verb>
       <command:noun>CertificatePath</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Gets the physical path on disk of a certificate's private key.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>

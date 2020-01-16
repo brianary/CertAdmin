@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-CertificatePath
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the physical path on disk of a certificate's private key.
 
 ## SYNTAX
 

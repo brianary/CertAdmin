@@ -15,14 +15,22 @@ Cmdlets
 
 Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS).
 
-- [Block-CertificateAccess](docs/Block-CertificateAccess.md)
-- [Disable-Certificate](docs/Disable-Certificate.md)
-- [Enable-Certificate](docs/Enable-Certificate.md)
-- [Find-Certificate](docs/Find-Certificate.md)
-- [Get-CertificatePath](docs/Get-CertificatePath.md)
-- [Grant-CertificateAccess](docs/Grant-CertificateAccess.md)
-- [Revoke-CertificateAccess](docs/Revoke-CertificateAccess.md)
-- [Unblock-CertificateAccess](docs/Unblock-CertificateAccess.md)
+- [Block-CertificateAccess](docs/Block-CertificateAccess.md) &mdash;
+  Denies a user or an IIS app pool access to a certificate's private key.
+- [Disable-Certificate](docs/Disable-Certificate.md) &mdash;
+  Sets the Archived property on a certificate.
+- [Enable-Certificate](docs/Enable-Certificate.md) &mdash;
+  Unsets the Archived property on a certificate.
+- [Find-Certificate](docs/Find-Certificate.md) &mdash;
+  Searches a certificate store for certificates.
+- [Get-CertificatePath](docs/Get-CertificatePath.md) &mdash;
+  Gets the physical path on disk of a certificate's private key.
+- [Grant-CertificateAccess](docs/Grant-CertificateAccess.md) &mdash;
+  Gives a user or an IIS app pool access to a certificate's private key.
+- [Revoke-CertificateAccess](docs/Revoke-CertificateAccess.md) &mdash;
+  Revokes a user or an IIS app pool access to a certificate's private key.
+- [Unblock-CertificateAccess](docs/Unblock-CertificateAccess.md) &mdash;
+  Rescinds a denied user or an IIS app pool access to a certificate's private key.
 
 Tests
 -----
