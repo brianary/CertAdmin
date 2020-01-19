@@ -1,6 +1,7 @@
 # Pester tests, see https://github.com/Pester/Pester/wiki
 $envPath = $env:Path # avoid testing the wrong cmdlets
-Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -vb
+$module = Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -PassThru -vb
+Import-LocalizedData -BindingVariable manifest -BaseDirectory ./src/* -FileName (Split-Path $PWD -Leaf)
 $guest = "$env:COMPUTERNAME\Guest"
 $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).`
     IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -13,13 +14,23 @@ function Test-HasAccess($Who,$Path,$AccessType)
             $_.AccessControlType -eq $AccessType -and
             $_.FileSystemRights.HasFlag([Security.AccessControl.FileSystemRights]'Read')})
 }
-Describe 'CertAdmin' {
-    Context 'CertAdmin module' {
-        It "Given the CertAdmin module, it should have a nonzero version" {
-            $m = Get-Module CertAdmin
-            $m.Version |Should -Not -Be $null
-            $m.Version.Major |Should -BeGreaterThan 0
+Describe $module.Name {
+    Context "$($module.Name) module" -Tag Module {
+        It "Given the module, the version should match the manifest version" {
+            $module.Version |Should -BeExactly $manifest.ModuleVersion
         }
+		It "Given the module, the DLL file version should match the manifest version" {
+            (Get-Item "$($module.ModuleBase)\$($module.Name).dll").VersionInfo.FileVersionRaw |
+                Should -BeLike "$($manifest.ModuleVersion)*"
+		}
+		It "Given the module, the DLL product version should match the manifest version" {
+            (Get-Item "$($module.ModuleBase)\$($module.Name).dll").VersionInfo.ProductVersionRaw |
+                Should -BeLike "$($manifest.ModuleVersion)*"
+		} -Pending
+		It "Given the module, the DLL should have a valid semantic product version" {
+			$v = (Get-Item "$($module.ModuleBase)\$($module.Name).dll").VersionInfo.ProductVersion
+			[semver]::TryParse($v, [ref]$null) |Should -BeTrue
+		} -Pending
     }
     Context 'Disable-Certificate cmdlet' {
         It "Certificate Archived property is set" {
