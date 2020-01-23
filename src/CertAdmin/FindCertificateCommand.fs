@@ -71,4 +71,4 @@ type FindCertificateCommand () =
                                  (x.FindValue.GetType().Name) x.StoreLocation x.StoreName,
                              ErrorCategory.InvalidOperation, x.FindValue )
                 |> (x :> Cmdlet).ThrowTerminatingError
-        x.WriteObject(certs)
+        [ for i in 0..(certs.Count-1) -> certs.Item(i) ] |> List.iter x.WriteObject

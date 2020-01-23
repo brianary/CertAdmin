@@ -10,6 +10,8 @@ CertAdmin
 
 Manage certificates and their permissions on a Windows server.
 
+![example usage of CertAdmin](CertAdmin.gif)
+
 Cmdlets
 -------
 

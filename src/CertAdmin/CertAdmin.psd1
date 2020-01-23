@@ -2,7 +2,7 @@
 # and https://docs.microsoft.com/powershell/module/microsoft.powershell.core/new-modulemanifest
 @{
 RootModule = 'CertAdmin.dll'
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.2'
 CompatiblePSEditions = @('Core')
 GUID = 'e2c74aef-6c13-4b09-b6e3-feb8b47d4e64'
 Author = 'Brian Lalonde'
