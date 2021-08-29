@@ -15,7 +15,7 @@ Manage certificates and their permissions on a Windows server.
 Cmdlets
 -------
 
-Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS).
+Documentation is automatically generated using [platyPS](https://github.com/PowerShell/platyPS) (`.\doc.cmd`).
 
 - [Block-CertificateAccess](docs/Block-CertificateAccess.md) &mdash;
   Denies a user or an IIS app pool access to a certificate's private key.
@@ -37,6 +37,4 @@ Documentation is automatically generated using [platyPS](https://github.com/Powe
 Tests
 -----
 
-Tests are written for [Pester](https://github.com/Pester/Pester).
-
-To run the tests, run `dotnet build -t:pester`.
+Tests are written for [Pester](https://github.com/Pester/Pester) (`.\test.cmd`).
