@@ -7,7 +7,7 @@ $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsId
     IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 $pkcerts = Get-ChildItem Cert:\CurrentUser\My |Where-Object {$_.HasPrivateKey}
 
-function Test-HasAccess($Who,$Path,$AccessType)
+function Global:Test-HasAccess($Who,$Path,$AccessType)
 {
     [bool]((Get-Acl $Path).Access |
         Where-Object {$_.IdentityReference -eq $Who -and
@@ -64,7 +64,7 @@ Describe $module.Name {
     }
     Context 'Find-Certificate cmdlet' {
         It "Find '<FindValue>' by '<FindType>' in '<StoreLocation>\<StoreName>' should be returned" -TestCases @(
-            @{ FindValue = 'Microsoft'; FindType = 'FindBySubjectName'; StoreLocation = 'LocalMachine'; StoreName = 'AuthRoot' }
+            @{ FindValue = ' '; FindType = 'FindBySubjectName'; StoreLocation = 'LocalMachine'; StoreName = 'AuthRoot' }
         ) {
             Param($FindValue,$FindType,$StoreLocation,$StoreName)
             $certs = Find-Certificate $FindValue $FindType $StoreName $StoreLocation
@@ -148,5 +148,5 @@ Describe $module.Name {
             }
         }
     }
-}
+}.GetNewClosure()
 $env:Path = $envPath

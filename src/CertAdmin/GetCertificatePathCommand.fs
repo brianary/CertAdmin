@@ -36,10 +36,10 @@ type GetCertificatePathCommand () =
 
     [<DllImport("crypt32.dll", CallingConvention = CallingConvention.Cdecl)>]
     [<SuppressMessage("NameConventions", "NonPublicValuesNames")>]
-    static extern SafeNCryptKeyHandle private CertDuplicateCertificateContext(IntPtr certContext) // CERT_CONTEXT *
+    static extern SafeNCryptKeyHandle CertDuplicateCertificateContext(IntPtr certContext) // CERT_CONTEXT *
     [<DllImport("crypt32.dll", CallingConvention = CallingConvention.Cdecl, SetLastError = true)>]
     [<SuppressMessage("NameConventions", "NonPublicValuesNames")>]
-    static extern [<MarshalAs(UnmanagedType.Bool)>] bool private
+    static extern [<MarshalAs(UnmanagedType.Bool)>] bool
         CryptAcquireCertificatePrivateKey(SafeNCryptKeyHandle  pCert,
                                           uint32 dwFlags,
                                           IntPtr pvReserved, // void *
