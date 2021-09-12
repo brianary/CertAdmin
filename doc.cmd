@@ -1,1 +1,1 @@
-dotnet publish -t:%~n0
+dotnet publish -t:%~n0 %*
