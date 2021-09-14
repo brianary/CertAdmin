@@ -17,6 +17,9 @@ max_line_length          = 80
 [*.{fs,fsx}]
 indent_style = space
 
+[*.ps1]
+indent_style = tab
+
 # git
 [{.gitattributes,CODEOWNERS}]
 charset = utf-8
