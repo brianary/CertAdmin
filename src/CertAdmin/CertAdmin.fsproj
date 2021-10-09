@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <Target Name="SetAssemblyVersion" BeforeTargets="GetAssemblyVersion">
-    <Exec Command='pwsh -nol -noni -nop -c "&amp; { Import-LocalizedData -BindingVariable m -FileName $(MSBuildProjectName); (gv m -va).ModuleVersion }"'
-      ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
+    <Exec Command='pwsh -noni -nop -c "Import-LocalizedData -BindingVariable m -FileName $(MSBuildProjectName); (gv m -va).ModuleVersion"'
+        ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="Version" />
     </Exec>
   </Target>
@@ -42,18 +42,18 @@
 
   <Target Name="Documentation" DependsOnTargets="Publish">
     <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll"
-      DestinationFolder="$(OutputPath)" />
-    <Exec Command='pwsh -nol -noni -nop -c "&amp; { Import-Module (Resolve-Path $(OutputPath)*.psd1); New-MarkdownHelp -Module $(MSBuildProjectName) -OutputFolder ..\..\docs -ea 0; Update-MarkdownHelp ..\..\docs; New-ExternalHelp ..\..\docs -OutputPath . -Force }"'
-      IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
+        DestinationFolder="$(OutputPath)" />
+    <Exec Command='pwsh -noni -nop -c "Import-Module (Resolve-Path $(OutputPath)*.psd1); New-MarkdownHelp -Module $(MSBuildProjectName) -OutputFolder ..\..\docs -ea 0; Update-MarkdownHelp ..\..\docs; New-ExternalHelp ..\..\docs -OutputPath . -Force"'
+        IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
   </Target>
 
   <Target Name="test" DependsOnTargets="Pester" />
 
   <Target Name="Pester" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Debug'">
     <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll"
-      DestinationFolder="$(OutputPath)" />
-    <Exec Command='pwsh -nol -noni -nop -c "&amp; { cd ..\..; Invoke-Pester }"'
-      IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
+        DestinationFolder="$(OutputPath)" />
+    <Exec Command='pwsh -noni -nop -c "cd ..\..; Invoke-Pester"'
+        IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
   </Target>
 
   <ItemGroup>
@@ -61,18 +61,21 @@
   </ItemGroup>
 
   <Target Name="PublishModule" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Release'">
-    <RemoveDir Directories="@(PSModulePath->'%(FullPath)\$(MSBuildProjectName)')" />
+    <RemoveDir Directories="@(PSModulePath-&gt;'%(FullPath)\$(MSBuildProjectName)')" />
     <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll" DestinationFolder="$(OutputPath)" />
     <ItemGroup><ModuleFiles Include="$(OutputPath)\*" /></ItemGroup>
-    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="@(PSModulePath->'%(FullPath)\$(MSBuildProjectName)\$(Version)')" />
-    <Error Text="To publish, first run: (Get-Credential API-key -Message &#x27;Enter your API key&#x27;).Password |ConvertFrom-SecureString |Out-File .\.apikey utf8"
-      Condition="!Exists('..\..\.apikey')" />
-    <Exec Command='pwsh -nol -noni -nop -c "&amp; { (New-Object PSCredential apikey,(Get-Content ..\..\.apikey |ConvertTo-SecureString)).GetNetworkCredential().Password }"'
-      ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="Exists('..\..\.apikey')">
+    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="@(PSModulePath-&gt;'%(FullPath)\$(MSBuildProjectName)\$(Version)')" />
+    <Exec Command='pwsh -noni -nop -c "[bool](Get-SecretInfo $(MSBuildProjectName) -Vault PowerShellGallery)"'
+        ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="HasApiKey" />
+    </Exec>
+    <Error Text="To publish, first run: .\Set-ApiKey.ps1" Condition="!$(HasApiKey)" />
+    <Exec Command='pwsh -nop -c "(New-Object PSCredential _,(Get-Secret $(MSBuildProjectName) -Vault PowerShellGallery)).GetNetworkCredential().Password"'
+        ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="$(HasApiKey)">
       <Output TaskParameter="ConsoleOutput" PropertyName="ApiKey" />
     </Exec>
-    <Exec Command='pwsh -nol -noni -nop -c "&amp; { Import-Module $(MSBuildProjectName); Publish-Module -Name $(MSBuildProjectName) -NuGetApiKey $(ApiKey) }"'
-      IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="Exists('..\..\.apikey')" />
+    <Exec Command='pwsh -noni -nop -c "Import-Module $(MSBuildProjectName); Publish-Module -Name $(MSBuildProjectName) -NuGetApiKey $(ApiKey)"'
+        IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="$(HasApiKey)" />
   </Target>
 
 </Project>
