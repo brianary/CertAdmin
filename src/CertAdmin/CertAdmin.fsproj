@@ -60,22 +60,4 @@
     <PSModulePath Include="$(PSModulePath)" Exclude="C:\Program Files\**;C:\Windows\**;C:\ProgramData\chocolatey\**" />
   </ItemGroup>
 
-  <Target Name="PublishModule" DependsOnTargets="Publish" Condition="'$(Configuration)' == 'Release'">
-    <RemoveDir Directories="@(PSModulePath-&gt;'%(FullPath)\$(MSBuildProjectName)')" />
-    <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll" DestinationFolder="$(OutputPath)" />
-    <ItemGroup><ModuleFiles Include="$(OutputPath)\*" /></ItemGroup>
-    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="@(PSModulePath-&gt;'%(FullPath)\$(MSBuildProjectName)\$(Version)')" />
-    <Exec Command='pwsh -noni -nop -c "[bool](Get-SecretInfo $(MSBuildProjectName) -Vault PowerShellGallery)"'
-        ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="HasApiKey" />
-    </Exec>
-    <Error Text="To publish, first run: .\Set-ApiKey.ps1" Condition="!$(HasApiKey)" />
-    <Exec Command='pwsh -nop -c "(New-Object PSCredential _,(Get-Secret $(MSBuildProjectName) -Vault PowerShellGallery)).GetNetworkCredential().Password"'
-        ConsoleToMSBuild="true" IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="$(HasApiKey)">
-      <Output TaskParameter="ConsoleOutput" PropertyName="ApiKey" />
-    </Exec>
-    <Exec Command='pwsh -noni -nop -c "Import-Module $(MSBuildProjectName); Publish-Module -Name $(MSBuildProjectName) -NuGetApiKey $(ApiKey)"'
-        IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" Condition="$(HasApiKey)" />
-  </Target>
-
 </Project>
