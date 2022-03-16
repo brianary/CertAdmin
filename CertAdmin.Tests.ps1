@@ -1,7 +1,8 @@
 # Pester tests, see https://github.com/Pester/Pester/wiki
-$envPath = $env:Path # avoid testing the wrong cmdlets
-$module = Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -PassThru -vb
 Import-LocalizedData -BindingVariable manifest -BaseDirectory ./src/* -FileName (Split-Path $PWD -Leaf)
+# ensure the right cmdlets are tested
+$manifest.CmdletsToExport |Get-Command -CommandType Cmdlet -EA 0 |Remove-Item
+$module = Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -PassThru -vb
 $guest = "$env:COMPUTERNAME\Guest"
 $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).`
     IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
