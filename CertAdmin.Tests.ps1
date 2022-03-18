@@ -1,8 +1,9 @@
 # Pester tests, see https://github.com/Pester/Pester/wiki
 Import-LocalizedData -BindingVariable manifest -BaseDirectory ./src/* -FileName (Split-Path $PWD -Leaf)
-# ensure the right cmdlets are tested
-$manifest.CmdletsToExport |Get-Command -CommandType Cmdlet -EA 0 |Remove-Item
-$module = Import-Module (Resolve-Path ./src/*/bin/Debug/*/*.psd1) -PassThru -vb
+$psd1 = Resolve-Path ./src/*/bin/Debug/*/*.psd1
+if(1 -lt ($psd1 |Measure-Object).Count) {throw "Too many module binaries found: $psd1"}
+$module = Import-Module "$psd1" -PassThru -vb
+
 $guest = "$env:COMPUTERNAME\Guest"
 $notAdmin = !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).`
     IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -15,6 +16,7 @@ function Global:Test-HasAccess($Who,$Path,$AccessType)
             $_.AccessControlType -eq $AccessType -and
             $_.FileSystemRights.HasFlag([Security.AccessControl.FileSystemRights]'Read')})
 }
+
 Describe $module.Name {
     Context "$($module.Name) module" -Tag Module {
         It "Given the module, the version should match the manifest version" {
