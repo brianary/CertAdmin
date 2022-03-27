@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PublishTrimmed>true</PublishTrimmed>
@@ -53,6 +53,8 @@
     <Copy SourceFiles="$(OutputPath)\publish\FSharp.Core.dll"
         DestinationFolder="$(OutputPath)" />
     <Exec Command='pwsh -noni -nop -c "cd ..\..; Invoke-Pester"'
+        IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
+    <Exec Command='powershell -noni -nop -c "cd ..\..; Invoke-Pester"'
         IgnoreExitCode="true" IgnoreStandardErrorWarningFormat="true" />
   </Target>
 
