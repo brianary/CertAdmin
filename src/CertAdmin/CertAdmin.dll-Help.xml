@@ -17,9 +17,9 @@
         <maml:name>Block-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -29,9 +29,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>AppPool</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The name of an IIS app pool.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -41,9 +41,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -52,9 +52,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -66,9 +66,9 @@
         <maml:name>Block-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>UserName</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A Windows domain account.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -78,9 +78,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -90,9 +90,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -101,9 +101,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -115,9 +115,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>AppPool</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The name of an IIS app pool.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -127,9 +127,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -139,9 +139,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -151,9 +151,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>UserName</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A Windows domain account.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -163,9 +163,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -202,14 +202,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Block-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Block-CertificateAccess -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Denies the ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Denies the ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>
@@ -234,9 +234,9 @@
         <maml:name>Disable-Certificate</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The certificate to archive.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -246,9 +246,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para></maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -257,9 +257,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para></maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -271,9 +271,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The certificate to archive.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -283,9 +283,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para></maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -295,9 +295,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para></maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -387,9 +387,9 @@
         <maml:name>Enable-Certificate</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The certificate to un-archive.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -399,9 +399,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para></maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -410,9 +410,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para></maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -424,9 +424,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The certificate to un-archive.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -436,9 +436,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para></maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -448,9 +448,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para></maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -540,10 +540,10 @@
         <maml:name>Find-Certificate</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Value">
           <maml:name>FindValue</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The value to search for, usually a string.</maml:para>
             <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue must be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
           <dev:type>
             <maml:name>Object</maml:name>
@@ -553,11 +553,11 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Type, Field">
           <maml:name>FindType</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The field of the certificate to compare to FindValue. e.g. FindBySubjectName, FindByKeyUsage, FindByIssuerDistinguishedName</maml:para>
             <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue should be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
             <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">FindByThumbprint</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">FindBySubjectName</command:parameterValue>
@@ -584,10 +584,10 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>StoreName</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The name of the certificate store to search. e.g. My, TrustedPeople, Root</maml:para>
             <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">AddressBook</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AuthRoot</command:parameterValue>
@@ -607,9 +607,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
           <maml:name>StoreLocation</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Whether to search the certificates of the CurrentUser or the LocalMachine.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">CurrentUser</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LocalMachine</command:parameterValue>
@@ -623,9 +623,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Valid</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -634,9 +634,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>NotArchived</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Whether to further filter search results by excluding certificates marked as archived.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -645,9 +645,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Require</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Whether to throw an error if a certificate is not found.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -659,10 +659,10 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="Value">
         <maml:name>FindValue</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The value to search for, usually a string.</maml:para>
           <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue must be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
         <dev:type>
           <maml:name>Object</maml:name>
@@ -672,11 +672,11 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Type, Field">
         <maml:name>FindType</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The field of the certificate to compare to FindValue. e.g. FindBySubjectName, FindByKeyUsage, FindByIssuerDistinguishedName</maml:para>
           <maml:para>For a FindType of FindByTimeValid, FindByTimeNotYetValid, or FindByTimeExpired, the FindValue should be a datetime. For a FindType of FindByApplicationPolicy or FindByCertificatePolicy, the FindValue can be a string or a System.Security.Cryptography.Oid. For a FindType of FindByKeyUsage, the FindValue can be a string or an int bitmask.</maml:para>
           <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509FindType</command:parameterValue>
         <dev:type>
           <maml:name>X509FindType</maml:name>
@@ -686,10 +686,10 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>StoreName</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The name of the certificate store to search. e.g. My, TrustedPeople, Root</maml:para>
           <maml:para>Omitting a FindType or StoreName will search all stores and common fields.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">StoreName</command:parameterValue>
         <dev:type>
           <maml:name>StoreName</maml:name>
@@ -699,9 +699,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
         <maml:name>StoreLocation</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Whether to search the certificates of the CurrentUser or the LocalMachine.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">StoreLocation</command:parameterValue>
         <dev:type>
           <maml:name>StoreLocation</maml:name>
@@ -711,9 +711,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Valid</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Whether to further filter search results by checking the effective and expiration dates.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -723,9 +723,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>NotArchived</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Whether to further filter search results by excluding certificates marked as archived.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -735,9 +735,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Require</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Whether to throw an error if a certificate is not found.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -774,14 +774,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine</dev:code>
         <dev:remarks>
           <maml:para>Searches Cert:\LocalMachine\TrustedPeople for a certificate with a subject name of "ExampleCert".</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>Find-Certificate.ps1 ExampleCert FindBySubjectName TrustedPeople LocalMachine</dev:code>
+        <dev:code>Find-Certificate ExampleCert FindBySubjectName TrustedPeople LocalMachine</dev:code>
         <dev:remarks>
           <maml:para>Uses positional parameters to search Cert:\LocalMachine\TrustedPeople for a cert with subject of "ExampleCert".</maml:para>
         </dev:remarks>
@@ -819,9 +819,9 @@
         <maml:name>Get-CertificatePath</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>{{ Fill Certificate Description }}</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -834,9 +834,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>{{ Fill Certificate Description }}</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -892,7 +892,7 @@
       <command:verb>Get</command:verb>
       <command:noun>CertificatePermissions</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Returns the permissions of a certificate's private key file.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
@@ -903,9 +903,9 @@
         <maml:name>Get-CertificatePermissions</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
-            <maml:para>{{ Fill Certificate Description }}</maml:para>
-          </maml:Description>
+          <maml:description>
+            <maml:para>The certificate to display permissions for.</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -918,9 +918,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
-          <maml:para>{{ Fill Certificate Description }}</maml:para>
-        </maml:Description>
+        <maml:description>
+          <maml:para>The certificate to display permissions for.</maml:para>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -957,9 +957,23 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>PS C:\&gt; Get-CertificatePermissions -Certificate $cert</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Returns the permissions for the certificate in $cert.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Get-CertificatePermissions</dev:code>
+        <dev:remarks>
+          <maml:para>Returns the permissions for the certificate.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; $c = Find-Certificate.ps1 ExampleCert FindBySubjectName TrustedPeople LocalMachine ; Get-CertificatePermissions.ps1 $c</dev:code>
+        <dev:remarks>
+          <maml:para>Another approach to get cert permissions.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -987,9 +1001,9 @@
         <maml:name>Grant-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -999,9 +1013,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>AppPool</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The name of an IIS app pool.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1011,9 +1025,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1022,9 +1036,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1036,9 +1050,9 @@
         <maml:name>Grant-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>UserName</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A Windows domain account.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1048,9 +1062,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -1060,9 +1074,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1071,9 +1085,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1085,9 +1099,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>AppPool</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The name of an IIS app pool.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1097,9 +1111,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -1109,9 +1123,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1121,9 +1135,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>UserName</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A Windows domain account.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1133,9 +1147,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1172,14 +1186,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Grant-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Grant-CertificateAccess -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Allows the ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Allows the ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>
@@ -1213,9 +1227,9 @@
         <maml:name>Revoke-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -1225,9 +1239,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>AppPool</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The name of an IIS app pool.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1237,9 +1251,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1248,9 +1262,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1262,9 +1276,9 @@
         <maml:name>Revoke-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>UserName</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A Windows domain account.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1274,9 +1288,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -1286,9 +1300,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1297,9 +1311,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1311,9 +1325,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>AppPool</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The name of an IIS app pool.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1323,9 +1337,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -1335,9 +1349,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1347,9 +1361,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>UserName</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A Windows domain account.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1359,9 +1373,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1398,14 +1412,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Revoke-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Revoke-CertificateAccess -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Revokes the ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Revoke-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Revoke-CertificateAccess ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Revokes the ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>
@@ -1435,9 +1449,9 @@
         <maml:name>Unblock-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -1447,9 +1461,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>AppPool</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>The name of an IIS app pool.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1459,9 +1473,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1470,9 +1484,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1484,9 +1498,9 @@
         <maml:name>Unblock-CertificateAccess</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>UserName</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A Windows domain account.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -1496,9 +1510,9 @@
         </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
           <maml:name>Certificate</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-          </maml:Description>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
           <dev:type>
             <maml:name>X509Certificate2</maml:name>
@@ -1508,9 +1522,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
           <maml:name>Confirm</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1519,9 +1533,9 @@
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
-          <maml:Description>
+          <maml:description>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:Description>
+          </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
@@ -1533,9 +1547,9 @@
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>AppPool</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>The name of an IIS app pool.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1545,9 +1559,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
         <maml:name>Certificate</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A certificate from the Windows Certificate Store.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>X509Certificate2</maml:name>
@@ -1557,9 +1571,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1569,9 +1583,9 @@
       </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>UserName</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>A Windows domain account.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
@@ -1581,9 +1595,9 @@
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
-        <maml:Description>
+        <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:Description>
+        </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1620,14 +1634,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Unblock-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert</dev:code>
+        <dev:code>PS C:\&gt; Unblock-CertificateAccess -AppPool ExampleAppPool -Certificate $cert</dev:code>
         <dev:remarks>
           <maml:para>Revokes the denied ExampleAppPool app pool access to read the cert in $cert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Unblock-CertificateAccess.ps1 ExampleAppPool</dev:code>
+        <dev:code>PS C:\&gt; Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Unblock-CertificateAccess ExampleAppPool</dev:code>
         <dev:remarks>
           <maml:para>Revokes the denied ExampleAppPool app pool access to read the found ExampleCert.</maml:para>
         </dev:remarks>

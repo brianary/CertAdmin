@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-CertificatePermissions
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Returns the permissions of a certificate's private key file.
 
 ## SYNTAX
 
@@ -23,15 +23,29 @@ Get-CertificatePermissions [-Certificate] <X509Certificate2> [<CommonParameters>
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-CertificatePermissions -Certificate $cert
 ```
 
-{{ Add example description here }}
+Returns the permissions for the certificate in $cert.
+
+### Example 2
+```powershell
+PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Get-CertificatePermissions
+```
+
+Returns the permissions for the certificate.
+
+### Example 3
+```powershell
+PS C:\> $c = Find-Certificate.ps1 ExampleCert FindBySubjectName TrustedPeople LocalMachine ; Get-CertificatePermissions.ps1 $c
+```
+
+Another approach to get cert permissions.
 
 ## PARAMETERS
 
 ### -Certificate
-{{ Fill Certificate Description }}
+The certificate to display permissions for.
 
 ```yaml
 Type: X509Certificate2

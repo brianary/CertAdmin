@@ -34,7 +34,8 @@ type GetCertificatePermissionsCommand () =
             x.WriteVerbose(sprintf "Permissions for certificate: %A" x.Certificate)
             (GetCertificatePermissionsCommand.GetAccessControl x.Certificate).
                 GetAccessRules(true, true, typeof<NTAccount>).Cast<FileSystemAccessRule>()
-                |> Seq.iter x.WriteObject
+                |> Seq.toList
+                |> List.iter x.WriteObject
         with
         | :? ArgumentException as exn ->
             x.WriteError(ErrorRecord(exn, exn.Message, ErrorCategory.InvalidArgument, x.Certificate))

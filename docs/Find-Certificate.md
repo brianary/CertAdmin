@@ -24,14 +24,14 @@ Searches for certificates in the Windows Certificate Store.
 
 ### Example 1
 ```powershell
-PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine
+PS C:\> Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine
 ```
 
 Searches Cert:\LocalMachine\TrustedPeople for a certificate with a subject name of "ExampleCert".
 
 ### Example 2
 ```powershell
-Find-Certificate.ps1 ExampleCert FindBySubjectName TrustedPeople LocalMachine
+Find-Certificate ExampleCert FindBySubjectName TrustedPeople LocalMachine
 ```
 
 Uses positional parameters to search Cert:\LocalMachine\TrustedPeople for a cert with subject of "ExampleCert".

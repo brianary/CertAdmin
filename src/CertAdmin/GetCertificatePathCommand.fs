@@ -68,8 +68,13 @@ type GetCertificatePathCommand () =
         if not cert.HasPrivateKey then
             invalidArg "Certificate" "Certificate does not have a private key."
         let filename =
-            match cert.PrivateKey :> obj with
-            | :? ICspAsymmetricAlgorithm as key -> key.CspKeyContainerInfo.UniqueKeyContainerName
+            match
+                try cert.PrivateKey :> obj with
+                | :? CryptographicException as ex ->
+                    invalidArg "Certificate" "Unable to access the private key for this certificate."
+            with
+            | :? ICspAsymmetricAlgorithm as key ->
+                key.CspKeyContainerInfo.UniqueKeyContainerName
             | _ -> GetCertificatePathCommand.GetCngUniqueKeyContainerName cert
         if String.IsNullOrEmpty filename then
             invalidArg "Certificate" "Certificate is missing the private key filename."

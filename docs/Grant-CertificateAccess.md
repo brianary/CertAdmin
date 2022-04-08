@@ -31,14 +31,14 @@ This will explicitly allow access to a certificate's private key file.
 
 ### Example 1
 ```powershell
-PS C:\> Grant-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert
+PS C:\> Grant-CertificateAccess -AppPool ExampleAppPool -Certificate $cert
 ```
 
 Allows the ExampleAppPool app pool access to read the cert in $cert.
 
 ### Example 2
 ```powershell
-PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess.ps1 ExampleAppPool
+PS C:\> Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Grant-CertificateAccess ExampleAppPool
 ```
 
 Allows the ExampleAppPool app pool access to read the found ExampleCert.

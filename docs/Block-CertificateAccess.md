@@ -32,14 +32,14 @@ test a user or app pool's dependence on it, or aggressively protect it.
 
 ### Example 1
 ```powershell
-PS C:\> Block-CertificateAccess.ps1 -AppPool ExampleAppPool -Certificate $cert
+PS C:\> Block-CertificateAccess -AppPool ExampleAppPool -Certificate $cert
 ```
 
 Denies the ExampleAppPool app pool access to read the cert in $cert.
 
 ### Example 2
 ```powershell
-PS C:\> Find-Certificate.ps1 -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess.ps1 ExampleAppPool
+PS C:\> Find-Certificate -FindValue ExampleCert -FindType FindBySubjectName -StoreName TrustedPeople -StoreLocation LocalMachine |Block-CertificateAccess ExampleAppPool
 ```
 
 Denies the ExampleAppPool app pool access to read the found ExampleCert.
