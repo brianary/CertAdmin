@@ -20,13 +20,13 @@ type GetCertificatePermissionsCommand () =
 
     /// Returns the filesystem permissions for a certificate's private key file.
     static member internal GetAccessControl cert =
-        ((GetCertificatePathCommand.Invoke >> FileInfo) cert).GetAccessControl ()
+        (GetCertificatePathCommand.Invoke >> FileInfo >> FileSystemAclExtensions.GetAccessControl) cert
 
     /// Sets the filesystem permissions for a certificate's private key file.
     static member internal SetAccessControl cert transform =
         let fileinfo = (GetCertificatePathCommand.Invoke >> FileInfo) cert
-        let security = fileinfo.GetAccessControl ()
-        transform security |> fileinfo.SetAccessControl
+        let security = FileSystemAclExtensions.GetAccessControl fileinfo
+        FileSystemAclExtensions.SetAccessControl(fileinfo, transform security)
 
     override x.ProcessRecord () =
         base.ProcessRecord ()

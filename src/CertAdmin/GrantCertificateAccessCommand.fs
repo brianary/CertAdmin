@@ -36,7 +36,7 @@ type GrantCertificateAccessCommand () =
     static member internal EnsureAdminKeyAccess (cmdlet:PSCmdlet) =
         let admin = NTAccount @"BUILTIN\Administrators" :> IdentityReference
         let keysinfo = sprintf @"%s\Microsoft\Crypto" (Environment.GetEnvironmentVariable "ALLUSERSPROFILE") |> DirectoryInfo
-        let security = keysinfo.GetAccessControl ()
+        let security = FileSystemAclExtensions.GetAccessControl keysinfo
         let rules = security.GetAccessRules(true, true, typeof<NTAccount>).Cast<FileSystemAccessRule> ()
         let isAdminFull (r:FileSystemAccessRule) =
             r.IdentityReference = admin
@@ -49,10 +49,10 @@ type GrantCertificateAccessCommand () =
                 && cmdlet.ShouldProcess(sprintf "Administrators ownership of %s" keysinfo.FullName, "set") then
                 sprintf "Granting Administrators ownership of %s" keysinfo.FullName |> cmdlet.WriteVerbose
                 security.SetOwner admin
-                keysinfo.SetAccessControl security
+                FileSystemAclExtensions.SetAccessControl(keysinfo, security)
             sprintf "Granting Administrators full control of %s" keysinfo.FullName |> cmdlet.WriteVerbose
             FileSystemAccessRule(admin, FileSystemRights.FullControl, AccessControlType.Allow) |> security.AddAccessRule
-            keysinfo.SetAccessControl security
+            FileSystemAclExtensions.SetAccessControl(keysinfo, security)
 
     /// Change the permissions on a certificate's private key file to add or remove allow or deny access.
     member internal x.ChangePermissions controltype add =
