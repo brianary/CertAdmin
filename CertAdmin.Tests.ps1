@@ -38,8 +38,8 @@ Describe $module.Name {
 	Context 'Disable-Certificate cmdlet' {
 		It "Certificate Archived property is set" {
 			$cert = Get-ChildItem Cert:\CurrentUser\Root |
-				where {$_.NotAfter -lt (Get-Date) -and !$_.Archived} |
-				select -First 1
+				Where-Object {$_.NotAfter -lt (Get-Date) -and !$_.Archived} |
+				Select-Object -First 1
 			if($notAdmin) {Set-ItResult -Inconclusive -Because 'this process is not running as admin'}
 			elseif(!$cert) {Set-ItResult -Inconclusive -Because 'no certs were found to test'}
 			else
@@ -53,8 +53,8 @@ Describe $module.Name {
 	Context 'Enable-Certificate cmdlet' {
 		It "Certificate Archived property is not set" {
 			$cert = Get-ChildItem Cert:\CurrentUser\Root |
-				where {$_.NotAfter -lt (Get-Date) -and !$_.Archived} |
-				select -First 1
+				Where-Object {$_.NotAfter -lt (Get-Date) -and !$_.Archived} |
+				Select-Object -First 1
 			if($notAdmin) {Set-ItResult -Inconclusive -Because 'this process is not running as admin'}
 			elseif(!$cert) {Set-ItResult -Inconclusive -Because 'no certs were found to test'}
 			else
@@ -86,14 +86,14 @@ Describe $module.Name {
 			Param($Certificate,$Subject,$Thumbprint,$Path)
 			$Path |Should -Not -BeNullOrEmpty -Because 'a path value should be returned'
 			$Path |Should -Exist -Because 'the private key file should exist'
-		} -Skip:(!$pkcerts)
+		} -Skip:($notAdmin -or !$pkcerts)
 	}
 	Context 'Get-CertificatePermissions cmdlet' {
 		It "Get certificate private key permissions for '<Subject>' (<Thumbprint>)" -TestCases $certparams {
 			Param($Certificate,$Subject,$Thumbprint)
 			[object[]]$perms = $Certificate |Get-CertificatePermissions
 			$perms.Length |Should -BeGreaterThan 0 -Because 'the certificate should have permissions'
-		} -Skip:(!$pkcerts)
+		} -Skip:($notAdmin -or !$pkcerts)
 	}
 	Context 'Grant-CertificateAccess cmdlet' {
 		It "Grant $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
@@ -107,7 +107,7 @@ Describe $module.Name {
 				$Certificate |Grant-CertificateAccess -UserName $guest
 				Test-HasAccess $guest $Path 'Allow' |Should -BeTrue
 			}
-		}
+		} -Skip:($notAdmin)
 	}
 	Context 'Revoke-CertificateAccess cmdlet' {
 		It "Revoke $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
@@ -121,7 +121,7 @@ Describe $module.Name {
 				$Certificate |Revoke-CertificateAccess -UserName $guest
 				Test-HasAccess $guest $Path 'Allow' |Should -BeFalse
 			}
-		}
+		} -Skip:($notAdmin)
 	}
 	Context 'Block-CertificateAccess cmdlet' {
 		It "Deny $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
@@ -135,7 +135,7 @@ Describe $module.Name {
 				$Certificate |Block-CertificateAccess -UserName $guest
 				Test-HasAccess $guest $Path 'Deny' |Should -BeTrue
 			}
-		}
+		} -Skip:($notAdmin)
 	}
 	Context 'Unblock-CertificateAccess cmdlet' {
 		It "Rescind blocked $guest access to certificate '<Subject>' (<Thumbprint>)" -TestCases $certparams {
@@ -149,6 +149,6 @@ Describe $module.Name {
 				$Certificate |Unblock-CertificateAccess -UserName $guest
 				Test-HasAccess $guest $Path 'Deny' |Should -BeFalse
 			}
-		}
+		} -Skip:($notAdmin)
 	}
 }.GetNewClosure()
